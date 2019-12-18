@@ -24,6 +24,7 @@
     <script>
       $(function () {
         var socket = io();
+        var id;
         $('form').submit(function(){
           socket.emit('newmsg', $('#m').val(), socket.id);
           $('#m').val('');
@@ -32,6 +33,9 @@
         socket.on('newmsg', function(msg){
           $('#messages').append($('<li>').text(msg));
           window.scrollTo(0, document.body.scrollHeight);
+        });
+        socket.on('connect', () => {
+          id = socket.id;
         });
       });
     </script>
