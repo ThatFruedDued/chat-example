@@ -1,5 +1,5 @@
 {
-  "name": "gms chat",
+  "name": "gms-chat",
   "version": "0.0.1",
   "description": "a chat for gms that is more difficult to hack",
   "dependencies": {
