@@ -23,10 +23,10 @@
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
     <script>
       $(function () {
-        var socket = io(window.location.href);
-        var id;
+        var socket = io();
+        
         $('form').submit(function(){
-          socket.emit('newmsg', $('#m').val(), socket.id);
+          socket.emit('newmsg', $('#m').val());
           $('#m').val('');
           return false;
         });
@@ -35,7 +35,7 @@
           window.scrollTo(0, document.body.scrollHeight);
         });
         socket.on('connect', () => {
-          console.log(socket.id);
+          console.log();
         });
       });
     </script>
