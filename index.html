@@ -23,7 +23,7 @@
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
     <script>
       $(function () {
-        var socket = io();
+        var socket = io(window.location.href);
         var id;
         $('form').submit(function(){
           socket.emit('newmsg', $('#m').val(), socket.id);
