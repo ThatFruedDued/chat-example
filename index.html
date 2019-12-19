@@ -24,9 +24,9 @@
     <script>
       $(function () {
         var socket = io();
-        
+
         $('form').submit(function(){
-          socket.emit('newmsg', $('#m').val());
+          socket.emit('newmsg', $('#m').val(), localStorage.getItem('mypid'));
           $('#m').val('');
           return false;
         });
@@ -34,8 +34,16 @@
           $('#messages').append($('<li>').text(msg));
           window.scrollTo(0, document.body.scrollHeight);
         });
+        socket.on('newpid', function(pid){
+          localStorage.setItem('mypid', pid);
+        });
         socket.on('connect', () => {
-          console.log();
+          if ((localStorage.getItem('mypid') === null) || (localStorage.getItem('mypid') === undefined) || (localStorage.getItem('mypid') === '')){
+            var newName = prompt("Choose a name:");
+            socket.emit('original-setup', newName);
+          } else {
+            socket.emit('regular-setup', localStorage.getItem('mypid'));
+          }
         });
       });
     </script>
