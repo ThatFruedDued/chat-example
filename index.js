@@ -8,6 +8,16 @@ app.get('/', function(req, res){
 });
 
 io.on('connection', function(socket){
+  socket.on('chat message', function(msg){
+    io.emit('chat message', msg);
+  });
+});
+
+http.listen(port, function(){
+  console.log('listening on *:' + port);
+});
+
+io.on('connection', function(socket){
   socket.on('newmsg', function(msg, pid){
     io.emit('newmsg', '<a style="color:red>"' + guser(pid).rank + '</a> ' + guser(pid).name + ': ' + msg);
   });
@@ -19,10 +29,6 @@ io.on('connection', function(socket){
   socket.on('regular-setup', function(pid){
     wuser('same', socket.id, 'same', 'same', 'same');
   });
-});
-
-http.listen(port, function(){
-  console.log('listening on *:' + port);
 });
 
 function user(pid, tid, name, muted, rank){
