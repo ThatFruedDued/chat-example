@@ -1,8 +1,8 @@
 {
-  "name": "gms-chat",
-  "description": "a chat for gms that is more difficult to hack",
-  "website": "https://github.com/ThatFruedDued/gmschatfinal",
-  "repository": "https://github.com/ThatFruedDued/gmschatfinal",
+  "name": "Socket-Chat-Example",
+  "description": "my first socket.io app",
+  "website": "https://github.com/socketio/chat-example",
+  "repository": "https://github.com/socketio/chat-example",
   "logo": "https://node-js-sample.herokuapp.com/node.svg",
   "success_url": "/",
   "keywords": [
