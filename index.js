@@ -48,6 +48,9 @@ io.on('connection', function(socket){
     wuser(new user(newpid, socket.id, name, '0', ''), newpid);
     io.to(socket.id).emit('newpid', newpid);
   });
+  socket.on('regular-setup', function(pid){
+    wuser('same', socket.id, 'same', 'same', 'same');
+  });
 });
 
 http.listen(port, function(){
